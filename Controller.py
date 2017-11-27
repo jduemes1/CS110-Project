@@ -79,7 +79,7 @@ class Controller:
                         
                     for b in range(len(self.bullet)):
                         if self.bullet[b].rect.y>-20:
-                            self.bullet[b].fire()
+                            self.bullet[b].shootBullet()
                         if self.bullet[b].rect.colliderect(self.alien[a].rect)and self.bullet[b].rect.y>65:
                             self.bullet[b].kill()
                             self.alien[a].kill()
