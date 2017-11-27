@@ -1,5 +1,5 @@
 import pygame
-class ship:
+class ship(pygame.sprite.Sprite):
     def __init__(self, image: str, xcoor, ycoor):
         self.image = pygame.image.load(image)
         self.image = pygame.transform.scale(self.image,(120,120))
