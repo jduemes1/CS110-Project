@@ -1,10 +1,16 @@
 import pygame
 class ship:
     def __init__(self, image: str, xcoor, ycoor):
-        self.image = pygame.image.load("Path")
+        self.image = pygame.image.load(image)
+        self.image = pygame.transform.scale(self.image,(120,120))
+        self.rect = self.image.get_rect()
         self.x = xcoor
         self.y = ycoor
-    def moveRight(self):
-        self.x += 1
-    def moveLeft(self):
-        self.x -= 1
+    def moveRight(self, speed):
+        if self.rect.x < 930 
+            self.x+=speed +2 
+    def moveLeft(self,speed):
+        if self.rect.x >-50:
+            self.x-=speed+ 2
+            
+     
