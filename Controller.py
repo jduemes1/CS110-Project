@@ -1,9 +1,9 @@
 import pygame
-import bullet
-import ship
+import Bullet
+import Ship
 import Char
-import aliens
-import score
+import Alien
+import Score
 
 WIDTH = 1000
 HEIGHT = 700
@@ -17,10 +17,10 @@ class Controller:
         self.image = self.char.start()
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
-        self.room = pygame.image.load('classroom.jpg')
+        self.room = pygame.image.load('classroom2.jpg')
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.background.blit(self.room,(0,0))
-        self.ship = ship.ship(self.image[0],self.x,self.y)
+        self.ship = Ship.Ship(self.image[0], self.x,self.y)
         #print(pygame.font.get_fonts())
         self.alien= []
         self.bullet = []
@@ -38,14 +38,14 @@ class Controller:
         move = [False,False]
         done = False
         while not done:
-            self.alien.append(aliens.aliens(self.image[1]))
+            self.alien.append(Alien.Alien(self.image[1]))
             self.spritealien.add(self.alien)
             if len(self.alien)%15 == 0:
                 self.speed += 1
             for a in range(len(self.alien)):
                 while self.alien[a].rect.y<700:
                     pygame.time.delay(5)
-                    self.alien[a].move(self.speed)
+                    self.alien[a].run(self.speed)
                     self.display.blit(self.background,(0,0))
                     self.spriteship.draw(self.display)
                     self.spritealien.draw(self.display)
@@ -62,7 +62,7 @@ class Controller:
                             elif event.key == pygame.K_RIGHT:
                                 move[1] = True
                             elif event.key == pygame.K_SPACE:
-                                self.bullet.append(bullet.bullet(self.ship.rect.x+60,self.ship.rect.y))
+                                self.bullet.append(Bullet.Bullet(self.ship.rect.x+60,self.ship.rect.y))
                                 self.spritebullet.add(self.bullet)
                             
                         elif event.type == pygame.KEYUP:
@@ -79,7 +79,7 @@ class Controller:
                         
                     for b in range(len(self.bullet)):
                         if self.bullet[b].rect.y>-20:
-                            self.bullet[b].shootBullet()
+                            self.bullet[b].fire()
                         if self.bullet[b].rect.colliderect(self.alien[a].rect)and self.bullet[b].rect.y>65:
                             self.bullet[b].kill()
                             self.alien[a].kill()
@@ -97,7 +97,7 @@ class Controller:
                             pygame.display.flip()
                     if self.ship.rect.colliderect(self.alien[a].rect):
                         return self.score.count
-                    elif self.alien[a].rect.y ==640:
+                    elif 640 <= self.alien[a].rect.y <=700:
                         return self.score.count               
 
 
