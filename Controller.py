@@ -1,9 +1,9 @@
 import pygame
-import Bullet
-import Ship
+import bullet
+import ship
 import Char
-import Alien
-import Score
+import aliens
+import score
 
 WIDTH = 1000
 HEIGHT = 700
