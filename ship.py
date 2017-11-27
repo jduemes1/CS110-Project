@@ -7,7 +7,7 @@ class ship:
         self.x = xcoor
         self.y = ycoor
     def moveRight(self, speed):
-        if self.rect.x < 930 
+        if self.rect.x < 930: 
             self.x+=speed +2 
     def moveLeft(self,speed):
         if self.rect.x >-50:
