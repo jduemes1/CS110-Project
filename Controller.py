@@ -20,7 +20,7 @@ class Controller:
         self.room = pygame.image.load('classroom2.jpg')
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.background.blit(self.room,(0,0))
-        self.ship = Ship.Ship(self.image[0], self.x,self.y)
+        self.ship = ship.ship(self.image[0], self.x,self.y)
         #print(pygame.font.get_fonts())
         self.alien= []
         self.bullet = []
@@ -31,21 +31,21 @@ class Controller:
         self.spritebullet = pygame.sprite.Group(self.bullet)
 
         self.font = pygame.font.SysFont('bodoniblack',30)
-        self.score = Score.Score()
+        self.score = score.score()
         self.value = self.font.render('Score: '+ str(self.score.count),True,(0,255,0))
         
     def start(self):
         move = [False,False]
         done = False
         while not done:
-            self.alien.append(Alien.Alien(self.image[1]))
+            self.alien.append(aliens.aliens(self.image[1]))
             self.spritealien.add(self.alien)
             if len(self.alien)%15 == 0:
                 self.speed += 1
             for a in range(len(self.alien)):
                 while self.alien[a].rect.y<700:
                     pygame.time.delay(5)
-                    self.alien[a].run(self.speed)
+                    self.alien[a].move(self.speed)
                     self.display.blit(self.background,(0,0))
                     self.spriteship.draw(self.display)
                     self.spritealien.draw(self.display)
@@ -62,7 +62,7 @@ class Controller:
                             elif event.key == pygame.K_RIGHT:
                                 move[1] = True
                             elif event.key == pygame.K_SPACE:
-                                self.bullet.append(Bullet.Bullet(self.ship.rect.x+60,self.ship.rect.y))
+                                self.bullet.append(bullet.bullet(self.ship.rect.x+60,self.ship.rect.y))
                                 self.spritebullet.add(self.bullet)
                             
                         elif event.type == pygame.KEYUP:
@@ -79,7 +79,7 @@ class Controller:
                         
                     for b in range(len(self.bullet)):
                         if self.bullet[b].rect.y>-20:
-                            self.bullet[b].fire()
+                            self.bullet[b].shootBullet()
                         if self.bullet[b].rect.colliderect(self.alien[a].rect)and self.bullet[b].rect.y>65:
                             self.bullet[b].kill()
                             self.alien[a].kill()
