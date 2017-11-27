@@ -1,5 +1,4 @@
 import pygame
-import Image
 import Highlight
 
 WIDTH = 1000
@@ -11,11 +10,17 @@ class Char:
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
         self.list = ['steve2.png','colin3.png','melanie3.png','shania3.png','anthony3.png']
-        self.first = Image.Image('steve2.png')
-        self.second = Image.Image('colin3.png')
-        self.third = Image.Image('melanie3.png')
-        self.fourth = Image.Image('shania3.png')
-        self.fifth = Image.Image('anthony3.png')
+        self.first = pygame.image.load('steve2.png')
+        self.second = pygame.image.load('colin3.png')
+        self.third = pygame.image.load('melanie3.png')
+        self.fourth = pygame.image.load('shania3.png')
+        self.fifth = pygame.image.load('anthony3.png')
+        self.first = pygame.transform.scale(self.first, (150,150))
+        self.second = pygame.transform.scale(self.second, (150,150))
+        self.third = pygame.transform.scale(self.third, (150,150))
+        self.fourth = pygame.transform.scale(self.fourth, (150,150))
+        self.fifth = pygame.transform.scale(self.fifth, (150,150))
+
         self.highlight = Highlight.Highlight(40,90)
         self.sprites = pygame.sprite.Group(self.highlight)
         self.choice = 'steve2.png'
@@ -83,11 +88,11 @@ class Char:
 
             self.display.blit(self.background,(0,0))
             self.sprites.draw(self.display)
-            self.display.blit(self.first.image,(40,90))
-            self.display.blit(self.second.image,(240,90))
-            self.display.blit(self.third.image,(440,90))
-            self.display.blit(self.fourth.image,(640,90))
-            self.display.blit(self.fifth.image,(840,90))
+            self.display.blit(self.first,(40,90))
+            self.display.blit(self.second,(240,90))
+            self.display.blit(self.third,(440,90))
+            self.display.blit(self.fourth,(640,90))
+            self.display.blit(self.fifth,(840,90))
             self.display.blit(self.choose,(200,350))
             self.display.blit(self.instr,(100,500))
             self.display.blit(self.cont_one,(150,550))
