@@ -10,8 +10,19 @@ class End:
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
         self.font = pygame.font.SysFont('lucidaconsole',50)
-        self.fonty = pygame.font.SysFont('comicsansms',30)
-        self.score = self.fonty.render('Your Score: ' + str(num),True,(0,255,0)) 
+        self.fonty = pygame.font.SysFont('comicsansms',25)
+        self.score = self.fonty.render('Your Score: ' + str(num),True,(0,255,0))
+        self.file = open('highscore.txt', 'r')
+        if num >= int(self.file.read()):
+            self.file.close()
+            self.file = open('highscore.txt', 'w')
+            self.file.write(str(num))
+            self.file.close()
+            self.highscore = self.fonty.render('New High Score: ' + str(num),True,(0,255,0))
+        else:
+            self.file = open('highscore.txt', 'r')
+            self.highscore = self.fonty.render('High Score: ' + str(self.file.read()), True, (0,255,0))
+            self.file.close()
         self.again = self.fonty.render('Try Again',True,(0,255,0))
         self.finish = self.fonty.render('Quit',True,(0,255,0))
         letter = 'Game Over'
@@ -23,6 +34,7 @@ class End:
             self.background.blit(self.display,(self.end,200))
             self.end += 50
             pygame.display.flip()
+        self.display.blit(self.highscore,(370,300))
         self.display.blit(self.score,(400,350))
         self.display.blit(self.again,(360,500))
         self.display.blit(self.finish,(360,550))
@@ -41,6 +53,7 @@ class End:
                     #print(self.mouse)
                     if 360<self.mouse[0]<490 and 500<self.mouse[1]<540:
                         pygame.draw.rect(self.display, (255,255,255),(360,500,140,40))
+                        self.display.blit(self.highscore,(370,300))
                         self.display.blit(self.score,(400,350))
                         self.display.blit(self.again,(360,500))
                         self.display.blit(self.finish,(360,550))
@@ -48,6 +61,7 @@ class End:
 
                     elif 355<self.mouse[0]<420 and 550<self.mouse[1]<590:
                         pygame.draw.rect(self.display, (255,255,255),(360,550,70,40))
+                        self.display.blit(self.highscore,(370,300))
                         self.display.blit(self.score,(400,350))
                         self.display.blit(self.again,(360,500))
                         self.display.blit(self.finish,(360,550))
@@ -55,6 +69,7 @@ class End:
                     else:
                         pygame.draw.rect(self.display, (0,0,0),(360,500,160,50))
                         pygame.draw.rect(self.display, (0,0,0),(360,550,70,50))
+                        self.display.blit(self.highscore,(370,300))
                         self.display.blit(self.score,(400,350))
                         self.display.blit(self.again,(360,500))
                         self.display.blit(self.finish,(360,550))
