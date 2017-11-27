@@ -8,7 +8,7 @@ class bullet(pygame.sprite.Sprite):
         
     def shootBullet(self):
         self.rect.y-=5
-    def exit(self)
+    def exit(self):
         self.rect.x = 1000
        
         
