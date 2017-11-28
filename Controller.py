@@ -71,9 +71,9 @@ class Controller:
                             elif event.key == pygame.K_RIGHT:
                                 move[1] = False
                     if move[0]: 
-                        self.ship.left(self.speed)
+                        self.ship.moveleft(self.speed)
                     elif move[1]:
-                        self.ship.right(self.speed)
+                        self.ship.moveright(self.speed)
                     #for collide in self.sprites:
                         #pygame.sprite.spritecollide(collide,
                         
