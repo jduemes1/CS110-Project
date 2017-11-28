@@ -4,7 +4,7 @@ class ship(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image)
         self.image = pygame.transform.scale(self.image,(120,120))
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(topleft = xcoor, ycoor)
         self.x = xcoor
         self.y = ycoor
     def moveRight(self, speed):
