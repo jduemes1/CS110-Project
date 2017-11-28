@@ -24,22 +24,27 @@ class Char:
         self.highlight = Highlight.Highlight(40,90)
         self.sprites = pygame.sprite.Group(self.highlight)
         self.choice = 'steve2.png'
-        self.font = pygame.font.SysFont('lucidaconsole',25)
-        self.choose = self.font.render('Click Enter to choose your character',True,(0,255,255))
+        self.font = pygame.font.SysFont('lucidaconsole',27)
+        self.fonty = pygame.font.SysFont('lucidaconsole',15)
+        self.choose = self.fonty.render('Click Enter to choose your character',True,(0,255,255))
         self.instr = self.font.render('Instructions: Use the arrows keys to move your selected',True,(255,0,255))
         self.cont_one =self.font.render('character and push the spacebar to shoot the invading',True,(255,0,255))
         self.cont_two =self.font.render('Computer Scientists.',True,(255,0,255))
         self.mouse = pygame.mouse.get_pos()
         
     def start(self):
+        self.display.blit(self.instr,(50,350))
+        self.display.blit(self.cont_one,(100,400))
+        self.display.blit(self.cont_two,(100,450))
+        pygame.display.flip()
         letter = 'Click Enter to choose your character'
-        self.x = 200
+        self.x = 350
         for c in letter:
-            self.text = self.font.render(c,True,(0,255,255))
+            self.text = self.fonty.render(c,True,(0,255,255))
             pygame.time.delay(50)
-            self.display.blit(self.text,(self.x,350))
-            self.background.blit(self.display,(self.x,350))
-            self.x += 15
+            self.display.blit(self.text,(self.x,600))
+            self.background.blit(self.display,(self.x,600))
+            self.x += 9
             pygame.display.flip()
         done = False
         while not done:
@@ -93,9 +98,9 @@ class Char:
             self.display.blit(self.third,(440,90))
             self.display.blit(self.fourth,(640,90))
             self.display.blit(self.fifth,(840,90))
-            self.display.blit(self.choose,(200,350))
-            self.display.blit(self.instr,(100,500))
-            self.display.blit(self.cont_one,(150,550))
-            self.display.blit(self.cont_two,(150,600))
+            self.display.blit(self.choose,(350,600))
+            self.display.blit(self.instr,(50,350))
+            self.display.blit(self.cont_one,(100,400))
+            self.display.blit(self.cont_two,(100,450))
             pygame.display.flip()
         pygame.quit()

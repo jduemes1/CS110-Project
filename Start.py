@@ -12,7 +12,7 @@ class Start:
         self.fonty = pygame.font.SysFont('lucidaconsole',70)
         self.play = self.font.render('Play',True,(0,255,0))
         self.display.blit(self.play,(400,500))
-        self.room = pygame.image.load('classroom.jpg')
+        self.room = pygame.image.load('classroom3.jpg')
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.display.blit(self.room,(0,0))
         pygame.display.flip()
