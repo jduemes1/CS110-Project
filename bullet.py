@@ -1,6 +1,7 @@
 import pygame
 class bullet(pygame.sprite.Sprite):
     def __init__(self,xcoor,ycoor):
+        pygame.sprite.Sprite.__init__(self)
         self.image = pygame.surface((6,20))
         self.x = xcoor
         self.y = ycoor
