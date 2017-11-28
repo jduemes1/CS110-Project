@@ -9,9 +9,9 @@ class ship(pygame.sprite.Sprite):
         self.y = ycoor
     def moveRight(self, speed):
         if self.rect.x < 930: 
-            self.x+=speed +2 
+            self.rect.x+=speed +2 
     def moveLeft(self,speed):
         if self.rect.x >-50:
-            self.x-=speed+ 2
+            self.rect.x-=speed+ 2
             
      
