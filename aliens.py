@@ -13,4 +13,4 @@ class aliens(pygame.sprite.Sprite):
         self.rect.y+=speed
     def exit(self):
         self.rect.x = 1000
-        self.rect.y = 700
+        self.rect.y = 750
