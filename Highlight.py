@@ -11,10 +11,20 @@ class Highlight(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(self.x,self.y))
 
     def left(self):
+        """
+        moves the select rectangle to the left
+        params: self
+        returns: none
+        """
         if self.rect.x > 50:
             self.rect.move_ip(-200,0)
         
     def right(self):
+        """
+        moves the select rectangle to the right
+        params: none
+        returns: none
+        """
         if self.rect.x < 650:
             self.rect.move_ip(200,0)
         
