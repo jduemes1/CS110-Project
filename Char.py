@@ -31,12 +31,11 @@ class Char:
         self.cont_one =self.font.render('character and push the spacebar to shoot the invading',True,(255,0,255))
         self.cont_two =self.font.render('Computer Scientists.',True,(255,0,255))
         self.mouse = pygame.mouse.get_pos()
+        self.bkground = pygame.image.load('library-tower.jpg')
+        self.bkground = pygame.transform.scale(self.bkground,(1000,700))
+        self.display.blit(self.bkground,(0,0))
         
-    def start(self):
-        self.display.blit(self.instr,(50,350))
-        self.display.blit(self.cont_one,(100,400))
-        self.display.blit(self.cont_two,(100,450))
-        pygame.display.flip()
+        
         letter = 'Click Enter to choose your character'
         self.x = 350
         for c in letter:
@@ -46,6 +45,13 @@ class Char:
             self.background.blit(self.display,(self.x,600))
             self.x += 9
             pygame.display.flip()
+        
+        self.display.blit(self.instr,(50,350))
+        self.display.blit(self.cont_one,(100,400))
+        self.display.blit(self.cont_two,(100,450))
+        pygame.display.flip()
+        
+    def start(self):
         done = False
         while not done:
             for event in pygame.event.get():
@@ -89,6 +95,7 @@ class Char:
 
 
             self.display.blit(self.background,(0,0))
+            self.background.blit(self.bkground,(0,0))
             self.sprites.draw(self.display)
             self.display.blit(self.first,(40,90))
             self.display.blit(self.second,(240,90))
