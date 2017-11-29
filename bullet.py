@@ -16,6 +16,6 @@ class bullet(pygame.sprite.Sprite):
         """
         self.rect.y-=5
     def exit(self):
-        self.rect.x = 1000
+        self.rect.x = 1050
        
         
