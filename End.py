@@ -46,6 +46,11 @@ class End:
 
         
     def choice(self):
+        """
+        refreshes end screen 
+        params: self
+        returns:none
+        """
         done = False
         while not done:
             for event in pygame.event.get():
@@ -53,7 +58,6 @@ class End:
                     done = True
                 elif event.type == pygame.MOUSEMOTION:
                     self.mouse = pygame.mouse.get_pos()
-                    #print(self.mouse)
                     if 560<self.mouse[0]<690 and 500<self.mouse[1]<540:
                         pygame.draw.rect(self.display, (255,255,255),(560,500,140,40))
                         self.display.blit(self.highscore,(370,250))
