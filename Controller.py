@@ -34,11 +34,11 @@ class Controller:
         self.value = self.font.render('Score: '+ str(self.score.count),True,(0,255,0))
         
     def start(self):
-        """
-        the giant while loop which includes all the events and their functions
-        params: self
-        returns: none
-        """
+        '''
+        Runs the game screen.
+        param list:(object) only needs self
+        return: (int) returns the score the player got
+        '''
         move = [False,False]
         done = False
         while not done:
