@@ -10,6 +10,11 @@ class aliens(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (100,100))
         self.rect = self.image.get_rect(topleft = (self.x,self.y))
     def move(self, speed):
+        """
+        moves the aliens down the screen
+        params: speed
+        returns: none
+        """
         self.rect.y+=speed
     def exit(self):
         self.rect.x = 1000
