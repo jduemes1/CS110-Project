@@ -1,7 +1,7 @@
 def main():
 
-#Screen width: 1000
-#Screen length: 700           
+#Screen width: 1000#
+#Screen length: 700#           
 
 class test_startupscreen:
     #creates the starting screen of the game
