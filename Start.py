@@ -31,6 +31,11 @@ class Start:
 
         
     def choice(self):
+        '''
+        Runs the start screen and the play button.
+        param list:(object) only needs self
+        return: (bool) returns True if play button clicked
+        '''
         done = False
         while not done:
             for event in pygame.event.get():
@@ -42,7 +47,6 @@ class Start:
                         pygame.draw.rect(self.display, (255,255,255),(400,500,70,45))
                         self.display.blit(self.play,(400,500))
                         pygame.display.flip()
-
                     else:
                         pygame.draw.rect(self.display, (0,0,0),(400,500,70,45))
                         self.display.blit(self.play,(400,500))
