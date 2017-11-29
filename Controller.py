@@ -55,7 +55,7 @@ class Controller:
                 self.end = End.End(0)
                 Controller.end(self)
             if not self.cont:
-                start = False
+                self.begin = False
         
     def start(self):
         '''
