@@ -12,10 +12,15 @@ class aliens(pygame.sprite.Sprite):
     def move(self, speed):
         """
         moves the aliens down the screen
-        params: speed
+        params: self, speed
         returns: none
         """
         self.rect.y+=speed
     def exit(self):
+        """
+        brings the alien off the screen
+        params: self
+        returns: none
+        """
         self.rect.x = 1000
         self.rect.y = 750
