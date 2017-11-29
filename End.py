@@ -39,6 +39,8 @@ class End:
             pygame.display.flip()
         self.display.blit(self.highscore,(370,250))
         self.display.blit(self.score,(400,320))
+        pygame.draw.rect(self.display, (0,0,0),(560,500,140,40))
+        pygame.draw.rect(self.display, (0,0,0),(560,550,70,40))
         self.display.blit(self.again,(560,500))
         self.display.blit(self.finish,(560,550))
         pygame.display.flip()
@@ -46,11 +48,11 @@ class End:
 
         
     def choice(self):
-        """
-        refreshes end screen 
-        params: self
-        returns:none
-        """
+        '''
+        Runs the game over screen.
+        param list:(object) only needs self
+        return: (bool) returns True or False
+        '''
         done = False
         while not done:
             for event in pygame.event.get():
@@ -89,4 +91,9 @@ class End:
                         return False
             pygame.display.flip()
     def close(self):
+        '''
+        Closes screen.
+        param list:(object) only needs self
+        return: (None)
+        '''
         pygame.quit()
