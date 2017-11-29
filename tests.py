@@ -1,15 +1,15 @@
 def main():
 
-#Screen width: 1000#
-#Screen length: 700#           
+#Screen width: 1000
+#Screen length: 700        
 
-class test_startupscreen:
+class test_startscreen:
     #creates the starting screen of the game
     print("##Testing Startup Screen Model##")
     print("PLAY")
     assert test_startupscreen == PLAY
 
-class test_startupscreen2:
+class test_playerscreen:
     #creates the screen for choosing your character
     print("##Testing Startup Screen 2 Model##"
     print("CHOOSE YOUR CHARACTER")
@@ -74,7 +74,7 @@ class test_bullet:
     test_bullet.Shoot(0)
     assert test_bullet.shot() == 0
 
-class test_scoreboard:
+class test_score:
     #creates scoreboard
     print("## Testing ScoreBoard Model##")
     test_scoreboard = score.Board()
@@ -84,28 +84,28 @@ class test_scoreboard:
     test_scoreboard.increase(1)
     assert test_scoreboard.increase() += 1
 
-class test_enemy:    
-    #creates enemy
-    print("##Standard Enemy Input Test##")
-    test_enemy = enemy.Enemy()
+class test_alien:    
+    #creates alien
+    print("##Standard Alien Input Test##")
+    test_alien = alien.Alien()
 
     #tests enemy spawning
     print("==Standard Enemy Input Test==")
-    test_enemy.Spawn(400, 700)
-    assert test_enemy.getCoordinates() == (400, 700)
+    test_alien.Spawn(400, 700)
+    assert test_alien.getCoordinates() == (400, 700)
 
-    #tests enemy movement (moves straight down along the screen)
+    #tests alien movement (moves straight down along the screen)
     print("==Standard Enemy Movement Test==")
-    test_enemy.Spawn(500, 700)
-    test_enemy.movement(500, 699)
-    assert test_enemy.getCoordinates() == (500, 699)
+    test_alien.Spawn(500, 700)
+    test_alien.movement(500, 699)
+    assert test_alien.getCoordinates() == (500, 699)
     
-    #tests when bullet hits enemy
+    #tests when bullet hits alien
     print("==Standard Contact Input Test==")
     test_bullet.Hit(10, 10)
     test_bullet.kill()
-    assert test_enemy.getCoordinates() == (10, 10)
-    assert test_enemy.delete()
+    assert test_alien.getCoordinates() == (10, 10)
+    assert test_alien.delete()
     assert test_bullet.delete()
     assert test_scoreboard.increase() += 1
     
