@@ -1,5 +1,6 @@
 import pygame
 import Controller
+import json
 
 WIDTH = 1000
 HEIGHT = 700
@@ -12,17 +13,16 @@ class End:
         self.font = pygame.font.SysFont('lucidaconsole',50)
         self.fonty = pygame.font.SysFont('comicsansms',25)
         self.score = self.fonty.render('Your Score: ' + str(num),True,(0,255,0))
-        self.file = open('highscore.txt', 'r')
-        if num >= int(self.file.read()):
-            self.file.close()
-            self.file = open('highscore.txt', 'w')
-            self.file.write(str(num))
-            self.file.close()
+        self.file = json.loads(open('highscore.json').read())
+        if num >= int(self.file['high']):
+            diction = {'high' : num}
+            write = json.dumps(diction)
+            self.writefile = open('highscore.json', 'w')
+            self.writefile.write(write)
+            self.writefile.close()
             self.highscore = self.fonty.render('New High Score: ' + str(num),True,(0,255,0))
         else:
-            self.file = open('highscore.txt', 'r')
-            self.highscore = self.fonty.render('High Score: ' + str(self.file.read()), True, (0,255,0))
-            self.file.close()
+            self.highscore = self.fonty.render('High Score: ' + str(self.file['high']), True, (0,255,0))
         self.again = self.fonty.render('Try Again',True,(0,255,0))
         self.finish = self.fonty.render('Quit',True,(0,255,0))
         letter = 'Game Over'
@@ -76,7 +76,6 @@ class End:
                         pygame.display.flip()
                                                 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    #self.mouse = pygame.mouse.get_pos()
                     if pygame.mouse.get_pressed()[0] and 360<self.mouse[0]<490 and 500<self.mouse[1]<540:
                         return True
                     elif pygame.mouse.get_pressed()[0] and 360<self.mouse[0]<420 and 550<self.mouse[1]<590:
