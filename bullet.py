@@ -11,11 +11,16 @@ class bullet(pygame.sprite.Sprite):
     def shootBullet(self):
         """
         shoots the bullet
-        params: none
+        params: self
         returns: none
         """
         self.rect.y-=5
     def exit(self):
+        """
+        brings bullet off the screen
+        params: self
+        returns: none
+        """
         self.rect.x = 1050
        
         
