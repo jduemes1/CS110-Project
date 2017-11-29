@@ -21,7 +21,6 @@ class Controller:
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.background.blit(self.room,(0,0))
         self.ship = ship.ship(self.image[0], self.x,self.y)
-        #print(pygame.font.get_fonts())
         self.alien= []
         self.bullet = []
         self.num =0
@@ -50,7 +49,6 @@ class Controller:
                     self.spriteship.draw(self.display)
                     self.spritealien.draw(self.display)
                     self.spritebullet.draw(self.display)
-                    #self.sprites.draw(self.display)
                     self.display.blit(self.value,(30,30))
                     pygame.display.flip()
                     for event in pygame.event.get():
@@ -74,8 +72,6 @@ class Controller:
                         self.ship.moveLeft(self.speed)
                     elif move[1]:
                         self.ship.moveRight(self.speed)
-                    #for collide in self.sprites:
-                        #pygame.sprite.spritecollide(collide,
                         
                     for b in range(len(self.bullet)):
                         if self.bullet[b].rect.y>-20:
@@ -88,9 +84,6 @@ class Controller:
                             
                             self.score.increase()
                             self.value = self.font.render('Score: '+ str(self.score.count),True,(0,255,0))
-
-                            #self.sprites.update()
-                            #self.sprites.draw(self.display)
                             self.spriteship.draw(self.display)
                             self.spritealien.draw(self.display)
                             self.spritebullet.draw(self.display)
@@ -105,7 +98,6 @@ class Controller:
             self.spriteship.draw(self.display)
             self.spritealien.draw(self.display)
             self.spritebullet.draw(self.display)
-            #self.sprites.draw(self.display)
             self.display.blit(self.value,(30,30))
             pygame.display.flip()
             for event in pygame.event.get():

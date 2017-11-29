@@ -15,6 +15,8 @@ class Start:
         self.room = pygame.image.load('classroom3.jpg')
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.display.blit(self.room,(0,0))
+        pygame.draw.rect(self.display, (0,0,0),(400,500,70,45))
+        self.display.blit(self.play,(400,500))
         pygame.display.flip()
         self.mouse = pygame.mouse.get_pos()
         letter = 'Comp Sci Invaders'
@@ -36,8 +38,6 @@ class Start:
                     done = True
                 elif event.type == pygame.MOUSEMOTION:
                     self.mouse = pygame.mouse.get_pos()
-
-                    #print(self.mouse)
                     if 400<self.mouse[0]<470 and 500<self.mouse[1]<540:
                         pygame.draw.rect(self.display, (255,255,255),(400,500,70,45))
                         self.display.blit(self.play,(400,500))
