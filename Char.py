@@ -54,10 +54,8 @@ class Char:
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.highlight.left()
-                        #print(self.highlight.rect.x)
                     elif event.key == pygame.K_RIGHT:
                         self.highlight.right()
-                        #print(self.highlight.rect.x)
                     elif event.key == pygame.K_RETURN:
                         if self.highlight.rect.x == 240:
                             self.choice = 'colin3.png'
@@ -77,7 +75,6 @@ class Char:
                         done = True
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     self.mouse = pygame.mouse.get_pos()
-                    #print(self.mouse)
                     if pygame.mouse.get_pressed()[0] and 50<self.mouse[0]<170 and 100<self.mouse[1]<220:
                         self.highlight.rect.x = 40
                     elif pygame.mouse.get_pressed()[0] and 250<self.mouse[0]<370 and 100<self.mouse[1]<220:
