@@ -96,10 +96,4 @@ class End:
                     elif pygame.mouse.get_pressed()[0] and 560<self.mouse[0]<620 and 550<self.mouse[1]<590:
                         return False
             pygame.display.flip()
-    def close(self):
-        '''
-        Closes screen.
-        param list:(object) only needs self
-        return: (None)
-        '''
-        pygame.quit()
+
