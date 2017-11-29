@@ -2,6 +2,11 @@ import pygame
 
 class Highlight(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        '''
+        Defines the highlight box.
+        param list:(object, int, int) needs xy coordinates
+        return: (None)
+        '''
         pygame.sprite.Sprite.__init__(self)
 
         self.x = x
@@ -22,7 +27,7 @@ class Highlight(pygame.sprite.Sprite):
     def right(self):
         """
         moves the select rectangle to the right
-        params: none
+        params: self
         returns: none
         """
         if self.rect.x < 650:

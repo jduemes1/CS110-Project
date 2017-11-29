@@ -6,6 +6,11 @@ HEIGHT = 700
 
 class Char:
     def __init__(self):
+        '''
+        Defines the character selection screen.
+        param list:(object) only needs self
+        return: (None)
+        '''
         pygame.init()
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
@@ -24,13 +29,16 @@ class Char:
         self.highlight = Highlight.Highlight(40,90)
         self.sprites = pygame.sprite.Group(self.highlight)
         self.choice = 'steve2.png'
+
         self.font = pygame.font.SysFont('lucidaconsole',27)
         self.fonty = pygame.font.SysFont('lucidaconsole',15)
         self.choose = self.fonty.render('Click Enter to choose your character',True,(0,255,255))
         self.instr = self.font.render('Instructions: Use the arrows keys to move your selected',True,(255,0,255))
         self.cont_one =self.font.render('character and push the spacebar to shoot the invading',True,(255,0,255))
         self.cont_two =self.font.render('Computer Scientists.',True,(255,0,255))
+
         self.mouse = pygame.mouse.get_pos()
+
         self.bkground = pygame.image.load('library-tower.jpg')
         self.bkground = pygame.transform.scale(self.bkground,(1000,700))
         self.display.blit(self.bkground,(0,0))

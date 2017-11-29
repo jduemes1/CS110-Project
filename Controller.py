@@ -10,6 +10,11 @@ HEIGHT = 700
 
 class Controller:
     def __init__(self):
+        '''
+        Defines the game screen.
+        param list:(object) only needs self
+        return: (None)
+        '''
         pygame.init()
         self.x = WIDTH / 2
         self.y = HEIGHT - 140
@@ -20,6 +25,7 @@ class Controller:
         self.room = pygame.image.load('classroom2.jpg')
         self.room = pygame.transform.scale(self.room,(1000,700))
         self.background.blit(self.room,(0,0))
+        
         self.ship = ship.ship(self.image[0], self.x,self.y)
         self.alien= []
         self.bullet = []
@@ -46,6 +52,7 @@ class Controller:
             self.spritealien.add(self.alien)
             if len(self.alien)%15 == 0:
                 self.speed += 1
+                
             for a in range(len(self.alien)):
                 while self.alien[a].rect.y<700:
                     pygame.time.delay(5)

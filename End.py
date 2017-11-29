@@ -7,6 +7,11 @@ HEIGHT = 700
 
 class End:
     def __init__(self, num):
+        '''
+        Defines the end screen.
+        param list:(object) only needs self
+        return: (None)
+        '''
         pygame.init()
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
@@ -16,6 +21,7 @@ class End:
         self.font = pygame.font.SysFont('lucidaconsole',50)
         self.fonty = pygame.font.SysFont('comicsansms',25)
         self.score = self.fonty.render('Your Score: ' + str(num),True,(0,255,0))
+
         self.file = json.loads(open('highscore.json').read())
         if num >= int(self.file['high']):
             diction = {'high' : num}
@@ -26,6 +32,7 @@ class End:
             self.highscore = self.fonty.render('New High Score: ' + str(num),True,(0,255,0))
         else:
             self.highscore = self.fonty.render('High Score: ' + str(self.file['high']), True, (0,255,0))
+
         self.again = self.fonty.render('Try Again',True,(0,255,0))
         self.finish = self.fonty.render('Quit',True,(0,255,0))
         letter = 'Game Over'

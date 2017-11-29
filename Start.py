@@ -5,6 +5,11 @@ HEIGHT = 700
 
 class Start:
     def __init__(self):
+        '''
+        Defines the start screen.
+        param list:(object) only needs self
+        return: (None)
+        '''
         pygame.init()
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
@@ -12,12 +17,14 @@ class Start:
         self.fonty = pygame.font.SysFont('lucidaconsole',70)
         self.play = self.font.render('Play',True,(0,255,0))
         self.display.blit(self.play,(400,500))
+        
         self.bkground = pygame.image.load('clocktower.jpg')
         self.bkground = pygame.transform.scale(self.bkground,(1000,700))
         self.display.blit(self.bkground,(0,0))
         pygame.draw.rect(self.display, (0,0,0),(400,500,70,45))
         self.display.blit(self.play,(400,500))
         pygame.display.flip()
+        
         self.mouse = pygame.mouse.get_pos()
         letter = 'Comp Sci Invaders'
         self.x = 150
