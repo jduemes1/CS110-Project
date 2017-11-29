@@ -10,6 +10,9 @@ class End:
         pygame.init()
         self.display = pygame.display.set_mode((WIDTH, HEIGHT))
         self.background = pygame.Surface(self.display.get_size()).convert()
+        self.bkground = pygame.image.load('Lab1.jpg')
+        self.bkground = pygame.transform.scale(self.bkground,(1000,700))
+        self.display.blit(self.bkground,(0,0))
         self.font = pygame.font.SysFont('lucidaconsole',50)
         self.fonty = pygame.font.SysFont('comicsansms',25)
         self.score = self.fonty.render('Your Score: ' + str(num),True,(0,255,0))
@@ -30,14 +33,14 @@ class End:
         for c in letter:
             self.text = self.font.render(c,True,(255,0,0))
             pygame.time.delay(100)
-            self.display.blit(self.text,(self.end,200))
-            self.background.blit(self.display,(self.end,200))
+            self.display.blit(self.text,(self.end,170))
+            self.background.blit(self.display,(self.end,170))
             self.end += 50
             pygame.display.flip()
-        self.display.blit(self.highscore,(370,300))
-        self.display.blit(self.score,(400,350))
-        self.display.blit(self.again,(360,500))
-        self.display.blit(self.finish,(360,550))
+        self.display.blit(self.highscore,(370,250))
+        self.display.blit(self.score,(400,320))
+        self.display.blit(self.again,(560,500))
+        self.display.blit(self.finish,(560,550))
         pygame.display.flip()
         self.mouse = pygame.mouse.get_pos()
 
@@ -51,34 +54,34 @@ class End:
                 elif event.type == pygame.MOUSEMOTION:
                     self.mouse = pygame.mouse.get_pos()
                     #print(self.mouse)
-                    if 360<self.mouse[0]<490 and 500<self.mouse[1]<540:
-                        pygame.draw.rect(self.display, (255,255,255),(360,500,140,40))
-                        self.display.blit(self.highscore,(370,300))
-                        self.display.blit(self.score,(400,350))
-                        self.display.blit(self.again,(360,500))
-                        self.display.blit(self.finish,(360,550))
+                    if 560<self.mouse[0]<690 and 500<self.mouse[1]<540:
+                        pygame.draw.rect(self.display, (255,255,255),(560,500,140,40))
+                        self.display.blit(self.highscore,(370,250))
+                        self.display.blit(self.score,(400,320))
+                        self.display.blit(self.again,(560,500))
+                        self.display.blit(self.finish,(560,550))
                         pygame.display.flip()
 
-                    elif 355<self.mouse[0]<420 and 550<self.mouse[1]<590:
-                        pygame.draw.rect(self.display, (255,255,255),(360,550,70,40))
-                        self.display.blit(self.highscore,(370,300))
-                        self.display.blit(self.score,(400,350))
-                        self.display.blit(self.again,(360,500))
-                        self.display.blit(self.finish,(360,550))
+                    elif 555<self.mouse[0]<620 and 550<self.mouse[1]<590:
+                        pygame.draw.rect(self.display, (255,255,255),(560,550,70,40))
+                        self.display.blit(self.highscore,(370,250))
+                        self.display.blit(self.score,(400,320))
+                        self.display.blit(self.again,(560,500))
+                        self.display.blit(self.finish,(560,550))
                         pygame.display.flip()
                     else:
-                        pygame.draw.rect(self.display, (0,0,0),(360,500,160,50))
-                        pygame.draw.rect(self.display, (0,0,0),(360,550,70,50))
-                        self.display.blit(self.highscore,(370,300))
-                        self.display.blit(self.score,(400,350))
-                        self.display.blit(self.again,(360,500))
-                        self.display.blit(self.finish,(360,550))
+                        pygame.draw.rect(self.display, (0,0,0),(560,500,140,40))
+                        pygame.draw.rect(self.display, (0,0,0),(560,550,70,40))
+                        self.display.blit(self.highscore,(370,250))
+                        self.display.blit(self.score,(400,320))
+                        self.display.blit(self.again,(560,500))
+                        self.display.blit(self.finish,(560,550))
                         pygame.display.flip()
                                                 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if pygame.mouse.get_pressed()[0] and 360<self.mouse[0]<490 and 500<self.mouse[1]<540:
+                    if pygame.mouse.get_pressed()[0] and 560<self.mouse[0]<690 and 500<self.mouse[1]<540:
                         return True
-                    elif pygame.mouse.get_pressed()[0] and 360<self.mouse[0]<420 and 550<self.mouse[1]<590:
+                    elif pygame.mouse.get_pressed()[0] and 560<self.mouse[0]<620 and 550<self.mouse[1]<590:
                         return False
             pygame.display.flip()
     def close(self):
