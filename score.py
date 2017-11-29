@@ -4,7 +4,7 @@ class score:
     def increase(self):
         """
         Increases the score 
-        params: none
+        params: self
         returns: none
         """
         self.count+=100
