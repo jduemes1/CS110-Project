@@ -1,5 +1,4 @@
 import pygame
-import Controller
 import json
 
 WIDTH = 1000

@@ -4,6 +4,8 @@ import ship
 import Char
 import aliens
 import score
+import Start
+import End
 
 WIDTH = 1000
 HEIGHT = 700
@@ -16,28 +18,44 @@ class Controller:
         return: (None)
         '''
         pygame.init()
-        self.x = WIDTH / 2
-        self.y = HEIGHT - 140
-        self.char = Char.Char()
-        self.image = self.char.start()
-        self.display = pygame.display.set_mode((WIDTH, HEIGHT))
-        self.background = pygame.Surface(self.display.get_size()).convert()
-        self.room = pygame.image.load('classroom2.jpg')
-        self.room = pygame.transform.scale(self.room,(1000,700))
-        self.background.blit(self.room,(0,0))
+        self.begin = True
+        while self.begin:
+            self.x = WIDTH / 2
+            self.y = HEIGHT - 140
+            self.cont = True
+            self.front = Start.Start()
+            if self.front.choice():
+                try:
+                    self.char = Char.Char()
+                    self.image = self.char.start()
+                    self.display = pygame.display.set_mode((WIDTH, HEIGHT))
+                    self.background = pygame.Surface(self.display.get_size()).convert()
+                    self.room = pygame.image.load('classroom2.jpg')
+                    self.room = pygame.transform.scale(self.room,(1000,700))
+                    self.background.blit(self.room,(0,0))
         
-        self.ship = ship.ship(self.image[0], self.x,self.y)
-        self.alien= []
-        self.bullet = []
-        self.num =0
-        self.speed = 1
-        self.spriteship = pygame.sprite.Group(self.ship)
-        self.spritealien = pygame.sprite.Group(self.alien)
-        self.spritebullet = pygame.sprite.Group(self.bullet)
+                    self.ship = ship.ship(self.image[0], self.x,self.y)
+                    self.alien= []
+                    self.bullet = []
+                    self.num =0
+                    self.speed = 1
+                    self.spriteship = pygame.sprite.Group(self.ship)
+                    self.spritealien = pygame.sprite.Group(self.alien)
+                    self.spritebullet = pygame.sprite.Group(self.bullet)
 
-        self.font = pygame.font.SysFont('bodoniblack',30)
-        self.score = score.score()
-        self.value = self.font.render('Score: '+ str(self.score.count),True,(0,255,0))
+                    self.font = pygame.font.SysFont('bodoniblack',30)
+                    self.score = score.score()
+                    self.value = self.font.render('Score: '+ str(self.score.count),True,(0,255,0))
+                    self.game = Controller.start(self)
+                    self.end = End.End(self.game)
+                    Controller.end(self)
+                except:
+                    self.cont = False
+            else:
+                self.end = End.End(0)
+                Controller.end(self)
+            if not self.cont:
+                start = False
         
     def start(self):
         '''
@@ -112,8 +130,10 @@ class Controller:
             self.spritebullet.draw(self.display)
             self.display.blit(self.value,(30,30))
             pygame.display.flip()
-            for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            done = True
 
-        pygame.quit()
+    def end(self):
+        if not self.end.choice():
+            self.cont = False
+            pygame.quit()
+            
+Controller()
