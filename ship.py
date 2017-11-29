@@ -10,7 +10,7 @@ class ship(pygame.sprite.Sprite):
     def moveRight(self, speed):
         """
         Moves the ship to the right
-        params: speed
+        params: self, speed
         returns:none
         """
         if self.rect.x < 930: 
@@ -18,7 +18,7 @@ class ship(pygame.sprite.Sprite):
     def moveLeft(self,speed):
         """
         moves the ship to the left
-        params: speed
+        params: self, speed
         returns: none
         """
         if self.rect.x >-50:
