@@ -9,6 +9,11 @@ class bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(center = (self.x,self.y))
         
     def shootBullet(self):
+        """
+        shoots the bullet
+        params: none
+        returns: none
+        """
         self.rect.y-=5
     def exit(self):
         self.rect.x = 1000
