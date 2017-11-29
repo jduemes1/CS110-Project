@@ -52,6 +52,11 @@ class Char:
         pygame.display.flip()
         
     def start(self):
+        '''
+        Runs the character selection screen.
+        param list:(object) only needs self
+        return: (str) returns choice of picture
+        '''
         done = False
         while not done:
             for event in pygame.event.get():
